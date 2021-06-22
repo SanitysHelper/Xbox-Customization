@@ -384,7 +384,7 @@ local function ZXDQV_fake_script() -- XboxLabel.ButtonMapping
 						end
 					end)
 				else
-					hole = 'local key = ' .. tostring(chosenkey).. '\n local N = game:GetService("VirtualInputManager") \nN:SendKeyEvent(true,key,false,game)'
+					hole = 'local key = ' .. tostring(chosenkey).. '\n local N = game:GetService("VirtualInputManager") \nN:SendKeyEvent(true,key,false,game)\nrepeat wait() until key.UserInputState == Enum.UserInputState.End\nN:SendKeyEvent(false,key,false,game)'
 					save("local uis = game:GetService('UserInputService')\nuis.InputBegan:Connect(function(key)\nif key.KeyCode == "..tostring(button).." then\n".. hole.. "\nend\nend)")
 					print(hole)
 					uis.InputBegan:Connect(function(key)
